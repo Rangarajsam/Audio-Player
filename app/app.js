@@ -1,0 +1,1 @@
+angular.module('audioPlayer',['playerController','playerService']);
