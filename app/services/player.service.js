@@ -10,6 +10,12 @@ angular.module('playerService',[])
     this.duration=function(audio){
         return audio.duration;
     };
+    this.duration=function(audio){
+        return audio.duration;
+    };
+    this.startAgain=function(audio){
+        return audio.currentTime=0;
+    };
     this.startAgain=function(audio){
         return audio.currentTime=0;
     };
