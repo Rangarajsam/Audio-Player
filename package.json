@@ -1,6 +1,6 @@
 {
   "name": "Audio-Player",
-  "vaersion": "0.0.1",
+  "version": "0.0.1",
   "decription": "A Custom Audio Player",
   "scripts": {
     "prestart": "npm install",

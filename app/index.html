@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="audioPlayer">
+
 <head>
     <meta charset="UTF-8">
     <title>Audio Player</title>
-    <link type="text/css" rel="stylesheet" href="css/player.css"/>
-    
+    <link type="text/css" rel="stylesheet" href="css/player.css" />
+
 </head>
+
 <body ng-controller="playerCtrl">
-  
-  <div class="song-details-holder">
-      <div class="song-image-holder">
-          <img src="images/Penguins.jpg">
-      </div>
-         <div class="song-right-details-holder">
-          <div class="song-name">Malare Ninne kanathirunnal</div>
-          <div class="song-author"><span>song by</span> Vijay Yesudas</div>
-          <div class="song-rating-holder">
-                    <div class="star-five"></div>
-                    <div class="star-five"></div>
-                    <div class="star-five"></div>
-                    <div class="star-five"></div>
-                    <div class="star-five"></div>
-                    <div class="clearfix"></div>
+
+    <div class="song-details-holder">
+        <div class="song-image-holder">
+            <img src="images/Penguins.jpg">
         </div>
-        <div class="buttons-holder">
-        <div class="button like">Like</div>
-         <div class="button add playlist">Playlist</div>
+        <div class="song-right-details-holder">
+            <div class="song-name" ng-init="selected='No Songs Selected'"> {{ selected | limitTo:30 }}</div>
+            <div class="song-author"><span>song by</span> Vijay Yesudas</div>
+            <div class="song-rating-holder">
+                <div class="star-five"></div>
+                <div class="star-five"></div>
+                <div class="star-five"></div>
+                <div class="star-five"></div>
+                <div class="star-five"></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="buttons-holder">
+                <div class="button like">Like</div>
+                <div class="button add playlist"> <!--onchange="angular.element(this).scope().playAudio()"-->
+                    <input type="file" onchange="angular.element(this).scope().fileNameChanged(this)"> 
+                </div>
+                <span>{{ selected }}</span>
+            </div>
         </div>
-      </div>
-      
-      <div class="clearfix"></div>
-      
-  </div>
-   <div class="controls-container">
-       <div class="controls-holder play" ng-click="playAudio()" ng-class="{'pause':playing}">        
-       </div>
-       <div class="controls-holder reverse"></div>
-       <div class="controls-holder forward"></div>
-       <div class="play-loader"></div>
-       <div class="player-time">04:16 / 06:24</div>
-       <div class="clearfix"></div>
-</div>
-<!--<audio>
+
+        <div class="clearfix"></div>
+
+    </div>
+    <div class="controls-container">
+        <div class="controls-holder play" ng-click="playAudio()" ng-class="{'pause':playing}">
+        </div>
+        <div class="controls-holder reverse"></div>
+        <div class="controls-holder forward"></div>
+        <div class="play-loader"></div>
+        <div class="player-time">04:16 / 06:24</div>
+        <div class="clearfix"></div>
+    </div>
+    <!--<audio>
     <source src="songs/Malare_Ninne.mp3" type="audio/mp3">
     Your browser does not support the audio element.
 </audio>-->
@@ -52,4 +57,5 @@
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript" src="./controllers/player.controller.js"></script>
 <script type="text/javascript" src="services/player.service.js"></script>
+<script type="text/javascript" src="directives/player.directive.js"></script>
 </html>
