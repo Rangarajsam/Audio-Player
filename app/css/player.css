@@ -129,7 +129,6 @@ body {
 }
 
 .button {
-  display: inline-block;
   white-space: nowrap;
   background-color: #012F98;
   border: 1px solid #777;
@@ -142,10 +141,24 @@ body {
   border-radius: .2em;
   -moz-box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.8) inset, 0 1px 0 rgba(0, 0, 0, 0.3);
   cursor: pointer;
+    float: left;
+    margin-right: 10px;
 }
 
 .button.playlist {
   background: #363638;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+.hidden-browse {
+    height: 30px;
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    top: 0;
+    left: -90px;
 }
 
 .like:before {
@@ -229,4 +242,42 @@ body {
   color: #c2c2c2;
   float: left;
   margin-top: 10px;
+}
+.tt-aplayer-container {
+    width: 800px;
+    margin: 0 auto;
+}
+.aplayer-left-container {
+    float: left;
+}
+.aplayer-right-container {
+    float: right;
+}
+.aplayer-song-list-container {
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    height: 250px;
+    box-sizing: border-box;
+    width: 280px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.songs-list {
+    width: 95%;
+    list-style-type: none;
+    margin: 5px 0 0 10px;
+    height: 230px;
+    overflow: auto;
+}
+.songs-list li {
+    font: normal 12px/25px arial;
+    display: block;
+    color: #fff;
+    cursor: pointer;
+    padding-left: 10px;
+}
+.songs-list li.active {
+    background: #000;
+    cursor: auto;
+    pointer-events: none;
 }

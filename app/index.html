@@ -9,7 +9,8 @@
 </head>
 
 <body ng-controller="playerCtrl">
-
+<div class="tt-aplayer-container">
+   <div class="aplayer-left-container">
     <div class="song-details-holder">
         <div class="song-image-holder">
             <img src="images/Penguins.jpg">
@@ -28,9 +29,9 @@
             <div class="buttons-holder">
                 <div class="button like">Like</div>
                 <div class="button add playlist"> <!--onchange="angular.element(this).scope().playAudio()"-->
-                    <input type="file" onchange="angular.element(this).scope().fileNameChanged(this)"> 
+                   Add Songs
+                    <input type="file" class="hidden-browse" onchange="angular.element(this).scope().fileNameChanged(this)"> 
                 </div>
-                <span>{{ selected }}</span>
             </div>
         </div>
 
@@ -43,9 +44,19 @@
         <div class="controls-holder reverse"></div>
         <div class="controls-holder forward"></div>
         <div class="play-loader"></div>
-        <div class="player-time">04:16 / 06:24</div>
+        <div class="player-time">{{currentTime | secToMins}} / {{ song.duration | secToMins }}</div>
         <div class="clearfix"></div>
     </div>
+    </div>
+    <div class="aplayer-right-container">
+        <div class="aplayer-song-list-container">
+            <ul class="songs-list">
+                <li ng-repeat="song in songList" ng-class="{'active':currentSongIndex===$index}" ng-click="playFromPlaylist($index)"> {{ song.songName }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
     <!--<audio>
     <source src="songs/Malare_Ninne.mp3" type="audio/mp3">
     Your browser does not support the audio element.
