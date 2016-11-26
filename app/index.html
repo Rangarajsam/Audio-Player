@@ -16,7 +16,7 @@
             <img src="images/Penguins.jpg">
         </div>
         <div class="song-right-details-holder">
-            <div class="song-name" ng-init="selected='No Songs Selected'"> {{ selected | limitTo:30 }}</div>
+            <div class="song-name" ng-init="selected='No Songs Selected'" ng-cloak> {{ selected | limitTo:30 }}</div>
             <div class="song-author"><span>song by</span> Vijay Yesudas</div>
             <div class="song-rating-holder">
                 <div class="star-five"></div>
@@ -41,17 +41,21 @@
     <div class="controls-container">
         <div class="controls-holder play" ng-click="playAudio()" ng-class="{'pause':playing}">
         </div>
-        <div class="controls-holder reverse"></div>
-        <div class="controls-holder forward"></div>
-        <div class="play-loader"></div>
-        <div class="player-time">{{currentTime | secToMins}} / {{ song.duration | secToMins }}</div>
+        <div class="controls-holder reverse" ng-click="previousSong()" 
+        ng-class="{'disabled-control':currentSongIndex===0}"></div>
+        <div class="controls-holder forward" ng-click="nextSong()" 
+        ng-class="{'disabled-control':currentSongIndex=== (songList.length-1)}"></div>
+        <div class="play-loader">
+            <progress id="progressBar" value="{{currentTime}}" max="{{duration}}"></progress>
+        </div>
+        <div class="player-time" ng-cloak>{{currentTime | secToMins}} / {{ duration | secToMins }}</div>
         <div class="clearfix"></div>
     </div>
     </div>
     <div class="aplayer-right-container">
         <div class="aplayer-song-list-container">
             <ul class="songs-list">
-                <li ng-repeat="song in songList" ng-class="{'active':currentSongIndex===$index}" ng-click="playFromPlaylist($index)"> {{ song.songName }}</li>
+                <li ng-repeat="song in songList" ng-class="{'active':currentSongIndex===$index}" ng-click="playFromPlaylist($index)" ng-cloak> {{ song.songName }}</li>
             </ul>
         </div>
     </div>
